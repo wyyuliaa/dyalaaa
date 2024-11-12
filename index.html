@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Luas dan Keliling Segitiga</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="button"] {
+            padding: 10px;
+            margin: 5px 0;
+            width: calc(100% - 22px);
+        }
+        input[type="button"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Menghitung Luas dan Keliling Segitiga</h1>
+<form id="segitigaForm">
+    <label for="alas">Alas:</label>
+    <input type="text" id="alas" name="alas" required>
+
+    <label for="tinggi">Tinggi:</label>
+    <input type="text" id="tinggi" name="tinggi" required>
+
+    <label for="luas">Luas:</label>
+    <input type="text" id="luas" name="luas" disabled>
+
+    <label for="keliling">Keliling:</label>
+    <input type="text" id="keliling" name="keliling" disabled>
+
+    <input type="button" value="Hitung" onclick="hitung()">
+</form>
+
+<script>
+function hitung() {
+    var alas = parseFloat(document.getElementById("alas").value);
+    var tinggi = parseFloat(document.getElementById("tinggi").value);
+    
+    if (isNaN(alas) || isNaN(tinggi)) {
+        alert("Silakan masukkan angka yang valid.");
+        return;
+    }
+
+    var luas = (alas * tinggi) / 2;
+    var sisiMiring = Math.sqrt((alas * alas) + (tinggi * tinggi));
+    var keliling = alas + tinggi + sisiMiring;
+
+    document.getElementById("luas").value = luas.toFixed(2);
+    document.getElementById("keliling").value = keliling.toFixed(2);
+}
+</script>
+
+</body>
+</html>
+
